@@ -1,0 +1,66 @@
+<html>
+<body>
+
+
+<div id="elemento" style="
+    width: 200px; 
+    height: 200px;
+    border: 5px solid red;
+    background-color: beige;
+    position: absolute;
+    top: 0px;
+    left: 0px;">
+
+</div>
+
+<br><br><br>
+<br><br><br>
+<br><br><br>
+<br><br><br>
+<br><br><br>
+
+
+Velocidade:
+<input type="text" id="velocidade">
+<br><br>
+
+Passo:
+<input type="text" id="passo">
+<br><br>
+
+<button onclick="start()">Start</button>
+
+
+<script language="javascript">
+    var posicao = 0
+    var incremento = 10
+    var elemento = document.getElementById("elemento")
+    
+
+    var timer = setInterval(deslocarObjeto,2000)
+
+    function deslocarObjeto(){
+
+        if (posicao >= 300){
+            clearInterval(timer)
+        }
+
+        posicao += incremento
+        console.log(posicao)
+        elemento.style.left = String(posicao) + "px"
+    }
+
+    function start(){
+        posicao = 0
+        elemento.style.left = "0px"
+        incremento = parseInt(document.getElementById("passo").value)
+
+        var milisegundos = document.getElementById("velocidade").value
+        
+        clearInterval(timer)
+        timer = setInterval(deslocarObjeto,parseInt(milisegundos))
+    }
+</script>
+
+</body>
+</html>
